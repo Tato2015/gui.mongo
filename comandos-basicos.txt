@@ -1,0 +1,28 @@
+INCIIAR EL ZOOKEEPER
+
+%KAFKA_HOME%\bin\windows\zookeeper-server-start.bat %KAFKA_HOME%\config\zookeeper.properties
+
+INICIAR UN BROKER
+
+%KAFKA_HOME%\bin\windows\kafka-server-start.bat %KAFKA_HOME%\config\server.properties
+
+CREACION DE TOPICOS
+%KAFKA_HOME%\bin\windows\kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 100 --topic demo
+
+ELIMINAR UN TOPICO
+%KAFKA_HOME%\bin\windows\kafka-topics.bat --delete --zookeeper localhost:2181 --topic demo
+
+
+VER TOPICOS
+%KAFKA_HOME%\bin\windows\kafka-topics.bat --list --zookeeper localhost:2181
+
+VER DETALLE DEL TOPICO
+%KAFKA_HOME%\bin\windows\kafka-topics.bat --describe --zookeeper localhost:2181 --topic demo  
+
+ARRANCAR CONSUMIDOR POR CONSOLA
+%KAFKA_HOME%\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --from-beginning --topic topic-basic-test
+
+
+ARRANCAR UN PRODUCTOR POR CONSOLA
+%KAFKA_HOME%\bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic topic-basic-test
+
